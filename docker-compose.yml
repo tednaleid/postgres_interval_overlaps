@@ -1,0 +1,10 @@
+---
+version: '2'
+services:
+    POSTGRES_1:
+      image: library/postgres:latest
+      container_name: "POSTGRES_1"
+      volumes:
+          - ./sql:/sql
+      ports:
+        - "5432:5432"
