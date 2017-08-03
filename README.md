@@ -67,6 +67,34 @@ docker exec -u postgres -it POSTGRES_1 /bin/bash -c "psql -d testdb -f /sql/grou
 
 to see how many things happened in each hour in the database table.
 
+or, with a histogram from SQL using [grouped_hist.sql](/sql/grouped_hist.sql):
+
+
+```
+docker exec -u postgres -it POSTGRES_1 /bin/bash -c "psql -d testdb -f /sql/grouped_hist.sql"
+ measurements |        hour         |                     histogram
+--------------+---------------------+----------------------------------------------------
+          190 | 2017-08-02 21:06:10 | XXXXXXXX
+          414 | 2017-08-02 22:06:10 | XXXXXXXXXXXXXXXXX
+          601 | 2017-08-02 23:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXX
+          742 | 2017-08-03 00:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          865 | 2017-08-03 01:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          977 | 2017-08-03 02:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+         1084 | 2017-08-03 03:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+         1161 | 2017-08-03 04:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+         1226 | 2017-08-03 05:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+         1049 | 2017-08-03 06:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          839 | 2017-08-03 07:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          656 | 2017-08-03 08:06:10 | XXXXXXXXXXXXXXXXXXXXXXXXXXX
+          499 | 2017-08-03 09:06:10 | XXXXXXXXXXXXXXXXXXXX
+          351 | 2017-08-03 10:06:10 | XXXXXXXXXXXXXX
+          232 | 2017-08-03 11:06:10 | XXXXXXXXX
+          140 | 2017-08-03 12:06:10 | XXXXXX
+           62 | 2017-08-03 13:06:10 | XXX
+           12 | 2017-08-03 14:06:10 |
+(18 rows)
+```
+
 
 Show discrete items that fall into each range:
 
